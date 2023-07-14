@@ -37,23 +37,6 @@ public class FamilyMember {
         this(name, gender, birthDate, null, father, mother);
     }
 
-
-//    public FamilyMember(String name, Gender gender, LocalDate birthDate,
-//                        FamilyMember father, FamilyMember mother) {
-//        this.name = name;
-//        this.gender = gender;
-//        this.birthDate = birthDate;
-//        parents = new ArrayList<>();
-//        if(father != null){
-//            parents.add(father);
-//        }
-//        if (mother != null){
-//            parents.add(mother);
-//        }
-//        children = new ArrayList<>();
-//    }
-
-
     public Gender getGender() {
         return gender;
     }
@@ -159,6 +142,7 @@ public class FamilyMember {
         StringBuilder answ = new StringBuilder();
         answ.append("дети: ");
         if(children.size() != 0){
+            answ.append(children.get(0).getName());
             for (int i = 1; i < children.size(); i++){
                 answ.append(", ");
                 answ.append(children.get(i).getName());

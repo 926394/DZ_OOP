@@ -35,6 +35,7 @@ public class Main {
 
         familyTree.add(new FamilyMember("Nikolay", Gender.man, LocalDate.of(1991,7,21),
                 familyTree.getByName("Vasilii"), familyTree.getByName("Tamara")));
+
         familyTree.add(new FamilyMember("Angelina", Gender.woman, LocalDate.of(1995, 4, 22),
                 familyTree.getByName("Vasilii"), familyTree.getByName("Tamara")));
 
