@@ -23,12 +23,15 @@ public class Main {
     public static void main(String[] args) {
         FamilyTree familyTree = new FamilyTree();
 
+        familyTree.add(new FamilyMember("Evgeniya", Gender.woman, LocalDate.of(1891,5,2),
+                LocalDate.of(2010,5,2),
+                familyTree.getByName(null),familyTree.getByName(null)));
 
         familyTree.add(new FamilyMember("Vasilii", Gender.man, LocalDate.of(1966,8,26),
                 familyTree.getByName(null), familyTree.getByName(null)));
 
         familyTree.add(new FamilyMember("Tamara", Gender.woman, LocalDate.of(1972, 5, 24),
-                familyTree.getByName(null), familyTree.getByName(null)));
+                familyTree.getByName("Evgeniya"), familyTree.getByName(null)));
 
         familyTree.add(new FamilyMember("Nikolay", Gender.man, LocalDate.of(1991,7,21),
                 familyTree.getByName("Vasilii"), familyTree.getByName("Tamara")));

@@ -11,14 +11,17 @@ public class FamilyMember {
     private String name;
     private Gender gender;
     private LocalDate birthDate;
+    private LocalDate DateOfDeath;
     private List<FamilyMember> parents;
     private List<FamilyMember> children;
 
-    public FamilyMember(String name, Gender gender, LocalDate birthDate,
+
+    public FamilyMember(String name, Gender gender, LocalDate birthDate, LocalDate dateOfDeath,
                         FamilyMember father, FamilyMember mother) {
         this.name = name;
         this.gender = gender;
         this.birthDate = birthDate;
+        this.DateOfDeath = dateOfDeath;
         parents = new ArrayList<>();
         if(father != null){
             parents.add(father);
@@ -27,8 +30,29 @@ public class FamilyMember {
             parents.add(mother);
         }
         children = new ArrayList<>();
-
     }
+
+    public FamilyMember(String name, Gender gender, LocalDate birthDate,
+                        FamilyMember father, FamilyMember mother ) {
+        this(name, gender, birthDate, null, father, mother);
+    }
+
+
+//    public FamilyMember(String name, Gender gender, LocalDate birthDate,
+//                        FamilyMember father, FamilyMember mother) {
+//        this.name = name;
+//        this.gender = gender;
+//        this.birthDate = birthDate;
+//        parents = new ArrayList<>();
+//        if(father != null){
+//            parents.add(father);
+//        }
+//        if (mother != null){
+//            parents.add(mother);
+//        }
+//        children = new ArrayList<>();
+//    }
+
 
     public Gender getGender() {
         return gender;
@@ -40,6 +64,10 @@ public class FamilyMember {
 
     public LocalDate getBirthDate(){
         return birthDate;
+    }
+
+    public LocalDate getDateOfDeath() {
+        return DateOfDeath;
     }
 
     public FamilyMember(List<FamilyMember> children) {
