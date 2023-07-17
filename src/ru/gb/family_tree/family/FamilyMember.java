@@ -5,23 +5,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.gb.family_tree.family.FamilyMember.Gender.man;
-import static ru.gb.family_tree.family.FamilyMember.Gender.woman;
+import static ru.gb.family_tree.family.Gender.man;
+import static ru.gb.family_tree.family.Gender.woman;
 
 public class FamilyMember {
     private String name;
-    private String gender;
+    private Gender gender;
     private LocalDate birthDate;
     private LocalDate DateOfDeath;
     private List<FamilyMember> parents;
     private List<FamilyMember> children;
 
-    public enum Gender {
-        man, woman
-    }
-
-
-    public FamilyMember(String name, String gender, LocalDate birthDate, LocalDate dateOfDeath,
+    public FamilyMember(String name, Gender gender, LocalDate birthDate, LocalDate dateOfDeath,
                         FamilyMember father, FamilyMember mother) {
         this.name = name;
         this.gender = gender;
@@ -37,13 +32,9 @@ public class FamilyMember {
         children = new ArrayList<>();
     }
 
-    public FamilyMember(String name, String gender, LocalDate birthDate,
+    public FamilyMember(String name, Gender gender, LocalDate birthDate,
                         FamilyMember father, FamilyMember mother ) {
         this(name, gender, birthDate, null, father, mother);
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public String getName(){
@@ -80,7 +71,7 @@ public class FamilyMember {
 
     public FamilyMember getFather() {
         for (FamilyMember parent : parents) {
-            if (parent.getGender() == man.name()) {
+            if (parent.gender == man) {
                 return parent;
             }
         }
@@ -89,7 +80,7 @@ public class FamilyMember {
 
     public FamilyMember getMother() {
         for (FamilyMember parent : parents) {
-            if (parent.getGender() == woman.name()){
+            if (parent.gender == woman){
                 return parent;
             }
         }
