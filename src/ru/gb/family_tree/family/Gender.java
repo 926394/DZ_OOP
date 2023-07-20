@@ -1,7 +1,9 @@
 package ru.gb.family_tree.family;
 
 
-public enum Gender {
+import java.io.Serializable;
+
+public enum Gender implements Serializable {
     man, woman
 }
 

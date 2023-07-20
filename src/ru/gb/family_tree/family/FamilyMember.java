@@ -1,6 +1,7 @@
 package ru.gb.family_tree.family;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 import static ru.gb.family_tree.family.Gender.man;
 import static ru.gb.family_tree.family.Gender.woman;
 
-public class FamilyMember {
+public class FamilyMember implements Serializable {
     private String name;
     private Gender gender;
     private LocalDate birthDate;
@@ -148,7 +149,5 @@ public class FamilyMember {
         }
         return answ.toString();
     }
-
-
 
 }

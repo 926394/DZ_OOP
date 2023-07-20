@@ -1,10 +1,12 @@
 package ru.gb.family_tree.tree;
 
 import ru.gb.family_tree.family.FamilyMember;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTree {
+public class FamilyTree implements Serializable {
     private List<FamilyMember> familyMemberList;
 
     public FamilyTree() {
