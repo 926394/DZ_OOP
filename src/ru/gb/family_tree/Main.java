@@ -26,7 +26,6 @@ public class Main {
 
         FamilyTree familyTree = new FamilyTree();
 
-
         familyTree.add(new FamilyMember("Evgeniya", Gender.woman, LocalDate.of(1891,5,2),
                 LocalDate.of(2010,5,2),
                 familyTree.getByName(null),familyTree.getByName(null)));
@@ -43,10 +42,17 @@ public class Main {
         familyTree.add(new FamilyMember("Angelina", Gender.woman, LocalDate.of(1995, 4, 22),
                 familyTree.getByName("Vasilii"), familyTree.getByName("Tamara")));
 
-        System.out.println(familyTree.getFamilyMemberinfo());
 
         FileHandlerForTree fileHandlerForTree = new FileHandlerForTree();
         fileHandlerForTree.save(familyTree, "C:/Users/Nikolay/IdeaProjects/DZ_OOP_Java/src/ru/gb/family_tree/test.out");
+
+        System.out.println(familyTree.getFamilyMemberinfo());
+//        familyTree.sortByName();
+//        System.out.println(familyTree.getFamilyMemberinfo());
+        familyTree.sortByBirthDate();
+        System.out.println(familyTree.getFamilyMemberinfo());
+
+
 
 //        FileHandlerForTree fileHandlerForTree = new FileHandlerForTree();
 //        FamilyTree familyTree = (FamilyTree) fileHandlerForTree.read

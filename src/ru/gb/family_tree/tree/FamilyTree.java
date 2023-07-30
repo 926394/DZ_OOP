@@ -1,12 +1,17 @@
 package ru.gb.family_tree.tree;
 
+import ru.gb.family_tree.comporator.FamilyMemberComparatorByName;
+import ru.gb.family_tree.comporator.FamilyMemberComparatorByYearOfBirth;
+import ru.gb.family_tree.Iterator.FamilyMemberIterator;
 import ru.gb.family_tree.family.FamilyMember;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Serializable, Iterable<FamilyMember> {
+    private int idMember;
     private List<FamilyMember> familyMemberList;
 
     public FamilyTree() {
@@ -58,5 +63,23 @@ public class FamilyTree implements Serializable {
         }
         return stringBuilder.toString();
     }
+
+    public String toString() {
+        return getFamilyMemberinfo();
+    }
+
+    public Iterator<FamilyMember> iterator(){
+        return new FamilyMemberIterator(familyMemberList);
+    }
+
+    public void sortByName(){
+        familyMemberList.sort(new FamilyMemberComparatorByName());
+    }
+
+    public void sortByBirthDate(){
+        familyMemberList.sort(new FamilyMemberComparatorByYearOfBirth());
+    }
+
+
 
 }
