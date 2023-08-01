@@ -1,6 +1,8 @@
 package ru.gb.family_tree.family;
 
 
+import ru.gb.family_tree.tree.FamilyItem;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
 import static ru.gb.family_tree.family.Gender.man;
 import static ru.gb.family_tree.family.Gender.woman;
 
-public class FamilyMember implements Serializable {
+public class FamilyMember implements Serializable, FamilyItem<FamilyMember> {
     private String name;
     private Gender gender;
     private LocalDate birthDate;

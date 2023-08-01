@@ -1,14 +1,15 @@
 package ru.gb.family_tree.Iterator;
 
 import ru.gb.family_tree.family.FamilyMember;
+import ru.gb.family_tree.tree.FamilyItem;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class FamilyMemberIterator implements Iterator<FamilyMember> {
+public class FamilyMemberIterator<E extends FamilyItem> implements Iterator<E> {
     private int index;
-    private List<FamilyMember> familyMemberList;
-    public FamilyMemberIterator(List<FamilyMember> familyMemberList) {
+    private List<E> familyMemberList;
+    public FamilyMemberIterator(List<E> familyMemberList) {
         this.familyMemberList = familyMemberList;
     }
 
@@ -16,7 +17,7 @@ public class FamilyMemberIterator implements Iterator<FamilyMember> {
         return index< familyMemberList.size();
     }
 
-    public FamilyMember next(){
+    public E next(){
         return familyMemberList.get(index++);
     }
 

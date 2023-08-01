@@ -4,6 +4,7 @@ package ru.gb.family_tree;
 import ru.gb.family_tree.family.FamilyMember;
 import ru.gb.family_tree.family.Gender;
 import ru.gb.family_tree.save.FileHandlerForTree;
+import ru.gb.family_tree.tree.FamilyItem;
 import ru.gb.family_tree.tree.FamilyTree;
 
 import java.time.LocalDate;
@@ -24,7 +25,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FamilyTree familyTree = new FamilyTree();
+        FamilyTree <FamilyMember> familyTree = new FamilyTree<>();
 
         familyTree.add(new FamilyMember("Evgeniya", Gender.woman, LocalDate.of(1891,5,2),
                 LocalDate.of(2010,5,2),
@@ -46,11 +47,11 @@ public class Main {
         FileHandlerForTree fileHandlerForTree = new FileHandlerForTree();
         fileHandlerForTree.save(familyTree, "C:/Users/Nikolay/IdeaProjects/DZ_OOP_Java/src/ru/gb/family_tree/test.out");
 
-        System.out.println(familyTree.getFamilyMemberinfo());
+        System.out.println(familyTree.getFamilyMemberInfo());
 //        familyTree.sortByName();
 //        System.out.println(familyTree.getFamilyMemberinfo());
         familyTree.sortByBirthDate();
-        System.out.println(familyTree.getFamilyMemberinfo());
+        System.out.println(familyTree.getFamilyMemberInfo());
 
 
 

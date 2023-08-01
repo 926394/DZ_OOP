@@ -10,15 +10,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable, Iterable<FamilyMember> {
+public class FamilyTree<E extends FamilyItem <E>> implements Serializable, Iterable<E> {
     private int idMember;
-    private List<FamilyMember> familyMemberList;
+    private List<E> familyMemberList;
 
-    public FamilyTree() {
-        familyMemberList = new ArrayList<>();
+    public FamilyTree(List<E> familyMemberList) {
+        this.familyMemberList = familyMemberList;
     }
 
-    public boolean add(FamilyMember familyMember){
+    public FamilyTree(){
+        this(new ArrayList<>());
+    }
+
+    public boolean add(E familyMember){
         if(!familyMemberList.contains(familyMember)){
             familyMemberList.add(familyMember);
 
@@ -30,21 +34,21 @@ public class FamilyTree implements Serializable, Iterable<FamilyMember> {
 
     }
 
-    private void addToParents(FamilyMember familyMember) {
-        for (FamilyMember parent: familyMember.getParents()){
+    private void addToParents(E familyMember) {
+        for (E parent: familyMember.getParents()){
             parent.addParents(familyMember);
         }
 
     }
 
-    private void addToChildren(FamilyMember familyMember) {
-        for (FamilyMember child: familyMember.getChildren()){
+    private void addToChildren(E familyMember) {
+        for (E child: familyMember.getChildren()){
             child.addParents(familyMember);
         }
     }
 
-    public FamilyMember getByName(String name){
-        for (FamilyMember familyMember: familyMemberList){
+    public E getByName(String name){
+        for (E familyMember: familyMemberList){
             if(familyMember.getName().equals(name)){
                 return familyMember;
             }
@@ -53,11 +57,11 @@ public class FamilyTree implements Serializable, Iterable<FamilyMember> {
     }
 
 
-    public String getFamilyMemberinfo(){
+    public String getFamilyMemberInfo(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Состав семьи: \n");
 
-        for (FamilyMember familyMember: familyMemberList) {
+        for (E familyMember: familyMemberList) {
             stringBuilder.append(familyMember.getInfo());
             stringBuilder.append("\n");
         }
@@ -65,19 +69,19 @@ public class FamilyTree implements Serializable, Iterable<FamilyMember> {
     }
 
     public String toString() {
-        return getFamilyMemberinfo();
+        return getFamilyMemberInfo();
     }
 
-    public Iterator<FamilyMember> iterator(){
-        return new FamilyMemberIterator(familyMemberList);
+    public Iterator<E> iterator(){
+        return new FamilyMemberIterator<>(familyMemberList);
     }
 
     public void sortByName(){
-        familyMemberList.sort(new FamilyMemberComparatorByName());
+        familyMemberList.sort(new FamilyMemberComparatorByName<>());
     }
 
     public void sortByBirthDate(){
-        familyMemberList.sort(new FamilyMemberComparatorByYearOfBirth());
+        familyMemberList.sort(new FamilyMemberComparatorByYearOfBirth<>());
     }
 
 
