@@ -136,9 +136,9 @@ public class ConsoleUI implements View {
 //        familyMemberList.sort(new FamilyMemberComparatorByName<>());
 //    }
 
-    public void sortByName() {
-        familyTree.sortByName();
-    }
+//    public void sortByName() {
+//        familyTree.sortByName();
+//    }
 
 //    public void sortByName(){
 //        familyMemberList.sort(new FamilyMemberComparatorByName<>());
